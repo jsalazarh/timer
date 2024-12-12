@@ -11,31 +11,23 @@
       margin: 0;
       padding: 0;
     }
-    .container {
-      margin-top: 20%;
+    #form-container {
+      margin-top: 20px;
     }
     #timer {
       font-size: 2rem;
       font-weight: bold;
       color: #ff0000;
     }
-    .button {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
-      font-size: 1rem;
-      border-radius: 5px;
-    }
-    .button:hover {
-      background-color: #0056b3;
-    }
     iframe {
       width: 80%;
       height: 600px;
       border: none;
+    }
+    #expired-message {
+      display: none;
+      color: red;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -89,7 +81,7 @@
     // Inicializar temporizador y habilitar enlace al formulario
     updateTimer();
     const timerInterval = setInterval(updateTimer, 1000);
-    formLink.href = FORM_URL;
+    //formLink.href = FORM_URL;
   </script>
 </body>
 </html>
