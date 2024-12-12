@@ -7,23 +7,35 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      text-align: center;
       margin: 0;
       padding: 0;
+      text-align: center;
     }
-    #form-container {
-      margin-top: 20px;
+
+    h1 {
+      font-size: 1.5rem; /* Reducir el tamaño del título */
+      margin-top: 20px; /* Un poco de espacio superior */
+      margin-bottom: 10px; /* Espacio abajo para no ocupar tanto espacio */
     }
+
+    p {
+      margin: 10px 0; /* Espacio entre los párrafos */
+    }
+
     #timer {
       font-size: 2rem;
       font-weight: bold;
       color: #ff0000;
+      margin-top: 10px;
     }
+
     iframe {
       width: 80%;
       height: 600px;
       border: none;
+      margin-top: 20px;
     }
+
     #expired-message {
       display: none;
       color: red;
@@ -36,7 +48,7 @@
     <h1>Formulario Temporizado</h1>
     <p>Responde el formulario antes de que el tiempo se agote:</p>
     <p>Tiempo restante: <span id="timer">1:00</span></p>
-    <!-- <a id="form-link" class="button" href="#" target="_blank">Abrir Formulariox</a> -->
+    
     <div id="form-container">
         <iframe id="google-form" src="https://docs.google.com/forms/d/1k045U2cUau5gTrt76Dlf5lZ_3Xm4IcnJYKwYfS00KeY/viewform">
         </iframe>
@@ -45,15 +57,12 @@
 
   <script>
     // CONFIGURACIÓN
-    //const FORM_URL = "https://docs.google.com/forms/d/e/1k045U2cUau5gTrt76Dlf5lZ_3Xm4IcnJYKwYfS00KeY/viewform"; 
     const FORM_URL = "https://docs.google.com/forms/d/1k045U2cUau5gTrt76Dlf5lZ_3Xm4IcnJYKwYfS00KeY/viewform";
-    //const TOTAL_TIME = 15 * 60 * 1000; // Tiempo total: 15 minutos en milisegundos.
-    const TOTAL_TIME = 1 * 60 * 1000;
+    const TOTAL_TIME = 1 * 60 * 1000; // 1 minuto
 
     // VARIABLES
     const startTime = new Date().getTime();
     const timerElement = document.getElementById("timer");
-    const formLink = document.getElementById("form-link");
 
     // FUNCIONES
     function updateTimer() {
@@ -64,10 +73,6 @@
       if (remainingTime <= 0) {
         // Tiempo agotado
         clearInterval(timerInterval);
-        formLink.href = "time_expired.html"; // Redirigir a una página de tiempo expirado.
-        formLink.textContent = "Tiempo expirado";
-        formLink.classList.remove("button");
-        formLink.style.pointerEvents = "none";
         timerElement.textContent = "00:00";
         return;
       }
@@ -78,10 +83,9 @@
       timerElement.textContent = `${minutes}:${seconds.toString().padStart(2, "0")}`;
     }
 
-    // Inicializar temporizador y habilitar enlace al formulario
+    // Inicializar temporizador
     updateTimer();
     const timerInterval = setInterval(updateTimer, 1000);
-    //formLink.href = FORM_URL;
   </script>
 </body>
 </html>
